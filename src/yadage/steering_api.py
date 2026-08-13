@@ -7,6 +7,7 @@ import yadageschemas
 
 from .steering_object import YadageSteering
 from .strategies import get_strategy
+from .utils import coerce_data_arg
 
 log = logging.getLogger(__name__)
 
@@ -84,6 +85,7 @@ def steering_ctx(
     modelsetup="inmem",
     modelopts=None,
 ):
+    dataarg = coerce_data_arg(dataarg)
     ys = YadageSteering.create(
         metadir=metadir,
         accept_metadir=True if (accept_metadir or cache) else False,
